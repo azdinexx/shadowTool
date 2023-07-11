@@ -18,7 +18,7 @@ export default function ValueCard({ label, value, setvalue }) {
   };
 
   return (
-    <div className='grid grid-cols-2 place-items-center text-sm bg-gray-50 p-2 rounded-md'>
+    <div className='grid grid-cols-2 place-items-center text-sm bg-gray-50 dark:bg-dark-gray-600 p-2 rounded-md'>
       <span className='p-1'>{label}</span>
       <div className='flex'>
         <input

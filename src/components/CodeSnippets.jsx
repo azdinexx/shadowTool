@@ -25,14 +25,14 @@ function CodeSnippets({ inset, color, x, y, blur, spread }) {
         <div
           className=' bg-gray-900 py-2 px-6 text-white rounded-tr-lg
         relative
-        after:absolute after:content-[""] after:bottom-0 after:-right-2   after:w-2 after:h-2 after:bg-black
-        before:absolute before:content-[""] before:bottom-0 before:-right-2 before:z-10 before:w-2 before:h-2 before:bg-white before:rounded-bl-3xl
+        after:absolute after:content-[""] after:bottom-0 after:-right-2   after:w-2 after:h-2 after:bg-gray-900
+        before:absolute before:content-[""] before:bottom-0 before:-right-2 before:z-10 before:w-2 before:h-2 before:bg-white before:dark:bg-dark-bg before:rounded-bl-3xl
         before:rounded-tr-2xl after:rounded-tr-full
         '
         >
           css
         </div>
-        <div className=' bg-gray-800 py-2 px-6 m-1 text-gray-200 border-l border-b rounded-lg'>
+        <div className=' bg-gray-800 py-2 px-6 m-1 text-gray-200   rounded-lg'>
           tailwind
         </div>
       </div>
