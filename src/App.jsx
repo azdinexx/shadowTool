@@ -1,35 +1,102 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Card from './components/Card';
+import ValueCard from './components/ValueCard.jsx';
+import Preview from './components/Preview.jsx';
+import CodeSnippets from './components/CodeSnippets.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [inset, setInset] = useState(false);
+  const [color, setcolor] = useState('#000000');
+  const [width, setwidth] = useState(200);
+  const [height, setheight] = useState(200);
+  const [x, setx] = useState(0);
+  const [y, sety] = useState(0);
+  const [blur, setblur] = useState(0);
+  const [spread, setspread] = useState(0);
+
+  const insetFalseStyles =
+    'bg-gray-50 border px-4 py-1 rounded text-gray-400  ';
+  const insetTrueStyles =
+    'bg-gray-200 border border-gray-500 px-4 py-1 rounded text-gray-700  ';
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className=' md:max-w-5xl p-4 md:mx-auto'>
+      <div className='flex items-end gap-2 text-lg font-bold'>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='32'
+          height='32'
+          viewBox='0 0 24 24'
+        >
+          <path
+            fill='currentColor'
+            d='M3 3h15v15H3V3m16 16h2v2h-2v-2m0-3h2v2h-2v-2m0-3h2v2h-2v-2m0-3h2v2h-2v-2m0-3h2v2h-2V7m-3 12h2v2h-2v-2m-3 0h2v2h-2v-2m-3 0h2v2h-2v-2m-3 0h2v2H7v-2Z'
+          />
+        </svg>
+        <h1>Shadow Tool</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className='  px-2 py-4 m-2 rounded'>
+        <h1 className='text-sm text-center '>Preview:</h1>
+        <div className=' flex justify-center items-center aspect-video md:aspect-auto p-4 md:h-[20rem]'>
+          <Preview
+            width={width}
+            height={height}
+            inset={inset}
+            color={color}
+            x={x}
+            y={y}
+            blur={blur}
+            spread={spread}
+          />
+        </div>
+
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700'>
+          <Card className=''>
+            <div className='flex   items-center justify-center  gap-4 bg-gray-50 h-[5rem]'>
+              <button
+                className={inset ? insetTrueStyles : insetFalseStyles}
+                onClick={() => setInset(!inset)}
+              >
+                inset
+              </button>
+
+              <div className='items-center flex gap-2'>
+                <span>color</span>
+                <input
+                  type='color'
+                  className='rounded-md overflow-hidden px-1'
+                  onChange={(e) => setcolor(e.target.value)}
+                />
+              </div>
+            </div>
+          </Card>
+          <Card>
+            <ValueCard label='x offset' value={x} setvalue={setx} />
+            <ValueCard label='y offset' value={y} setvalue={sety} />
+          </Card>
+          <Card>
+            <ValueCard label='width' value={width} setvalue={setwidth} />
+            <ValueCard label='height' value={height} setvalue={setheight} />
+          </Card>
+          <Card>
+            <ValueCard label='blur' value={blur} setvalue={setblur} />
+            <ValueCard label='spread' value={spread} setvalue={setspread} />
+          </Card>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <CodeSnippets
+        width={width}
+        height={height}
+        inset={inset}
+        color={color}
+        x={x}
+        y={y}
+        blur={blur}
+        spread={spread}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
